@@ -44,12 +44,13 @@ void helper(const string &s) {
     } else if (s[i] == 'H') {
       numb.push(1);
     } else if (s[i] == ')') {
-      int sumOfGroup = 0;
-      while (numb.top() != '0') {
+      int sum = 0;
+      while (numb.top() != 0) {
+        sum += numb.top();
         numb.pop();
-        sumOfGroup += numb.top();
       }
-      numb.push(sumOfGroup);
+      numb.pop(); // remove '('
+      numb.push(sum);
     } else {
       int ans = numb.top();
       numb.pop();
